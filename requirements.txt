@@ -1,0 +1,55 @@
+# ANLP course — pinned dependencies for all notebooks in notebooks/ (Sessions 1-4).
+# Target runtime: Python 3.12. Install into a conda env (see README.md):
+#   conda create -n anlp-hs26 python=3.12 -y
+#   conda activate anlp-hs26
+#   pip install -r requirements.txt
+#
+# Versions were checked against PyPI for Python 3.12 wheels on 2026-11-13
+# (existing pins from 2026-06-24 kept; new pins added on 2026-11-13).
+# Re-verify shortly before the delivery date — do not bump these from memory.
+# Note: torch 2.12.1 needs macOS 14+ on Apple Silicon.
+
+# --- General ---------------------------------------------------------------
+numpy==2.5.4
+pandas==3.0.3
+matplotlib==3.11.0
+scikit-learn==1.9.0
+tqdm==4.70.1
+ipykernel==7.3.0
+ipywidgets==8.1.9                              # progress bars in notebooks (tqdm, Hugging Face, Docling)
+jupyterlab==4.6.6
+
+# --- S1: NLP foundations ---------------------------------------------------
+spacy==3.8.14
+wordcloud==1.9.6
+nltk==3.9.4
+langdetect==1.0.9
+
+# --- S1: PDF text extraction -----------------------------------------------
+pymupdf==2.1                                   # imported as `pymupdf`
+docling==2.150.0
+pillow==13.0.0                                 # also used in S4 part 2
+
+# --- S2: text representations ----------------------------------------------
+gensim==4.4.0
+sentence-transformers==5.6.0
+
+# --- S3: transformers ------------------------------------------------------
+transformers==5.12.1
+torch==2.12.1
+keybert==0.9.0
+datasets==5.0.0
+
+# --- S4: LLMs for NLP (talk to a local Ollama server) ----------------------
+openai==3.3.0
+instructor==1.17.0
+pydantic==2.14.3
+pypdfium2==5.15.2
+jiwer==4.0.0
+gdown==6.5.1
+beautifulsoup4==4.15.0
+html5lib==1.1                                  # needed by pandas.read_html(flavor="bs4")
+
+# --- NOT installed by pip — see README.md ----------------------------------
+# spaCy English model:  python -m spacy download en_core_web_sm-3.8.0
+# Ollama app (S4 notebooks)
