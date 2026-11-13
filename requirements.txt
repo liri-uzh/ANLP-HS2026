@@ -46,7 +46,6 @@ instructor==1.17.0
 pydantic==2.14.3
 pypdfium2==5.15.2
 jiwer==4.0.0
-gdown==6.5.1
 beautifulsoup4==4.15.0
 html5lib==1.1                                  # needed by pandas.read_html(flavor="bs4")
 
