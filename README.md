@@ -1,6 +1,14 @@
 # ANLP HS2026
 
-## Environment setup
+These marerials are for the ZI course **Introduction to Natural Language Processing** (HS2026) at the University of Zurich.
+
+The notebooks are designed to be run in **Google Colab** or locally on your own computer. The notebooks are self-contained and install all required packages automatically on Colab. On your own computer, you need to set up a Python 3.12 environment and install the packages listed in `requirements.txt` (see below).
+
+## Google Colab
+
+To open a notebook in Google Colab, navigate to the notebook and then change the domain in the URL from `github.com` to `githubtocolab.com`.
+
+## Local Environment Setup
 
 You need about 10 GB of free disk space and an internet connection. The first run of some notebooks downloads models and datasets.
 
