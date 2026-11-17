@@ -12,6 +12,8 @@ To open a notebook in Google Colab, navigate to the notebook and then change the
 
 You need about 10 GB of free disk space and an internet connection. The first run of some notebooks downloads models and datasets.
 
+You can set up the Python environment with **conda** (steps 1–3 below) or with **uv** (see [Alternative setup with uv](#alternative-setup-with-uv)). Choose one. Steps 4–6 are the same for both.
+
 ### 1. Install conda
 
 If you do not have conda yet, install [Miniforge](https://github.com/conda-forge/miniforge) or [Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/install).
@@ -31,10 +33,40 @@ Run this from the folder that contains `requirements.txt`:
 
 ```bash
 uv pip install -r requirements.txt # uv is optional, it makes the output nicer
-python -m spacy download en_core_web_sm-3.8.0
+python -m spacy download en_core_web_sm-3.8.0 --direct
 ```
 
 The second line downloads the small English model for spaCy. It is not part of `requirements.txt`.
+
+### Alternative setup with uv
+
+Use this instead of steps 1–3 if you prefer [uv](https://docs.astral.sh/uv/) over conda.
+
+1. Install uv (see the [installation guide](https://docs.astral.sh/uv/getting-started/installation/)):
+   ```bash
+   # macOS / Linux
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   # Windows (PowerShell)
+   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+   ```
+2. Create a virtual environment with Python 3.12 in the project folder. uv downloads Python 3.12 for you if it is not installed.
+   ```bash
+   uv venv --python 3.12
+   ```
+   This creates a `.venv` folder.
+3. Activate the environment:
+   ```bash
+   source .venv/bin/activate      # macOS / Linux
+   .venv\Scripts\activate         # Windows
+   ```
+4. Install the Python packages and the spaCy English model:
+   ```bash
+   uv pip install -r requirements.txt
+   python -m spacy download en_core_web_sm-3.8.0 --direct
+   ```
+   (The environment has no `pip`, but that is fine: `spacy download` then uses `uv pip install` automatically.)
+
+Then continue with step 4. In VS Code, choose the `.venv` environment as kernel instead of `anlp-hs26`. Activate the environment (or prefix commands with `uv run`) before you run `jupyter lab` or the check in step 6.
 
 ### 4. Install Ollama
 
@@ -56,7 +88,7 @@ The S4 notebooks start `ollama serve` for you only on Google Colab. On your own 
 
 ### 5. Open the notebooks
 
-- **VS Code:** open a notebook in `notebooks/`, click **Select Kernel**, and choose `anlp-hs26`.
+- **VS Code:** open a notebook in `notebooks/`, click **Select Kernel**, and choose `anlp-hs26` (conda) or `.venv` (uv).
 - **JupyterLab:** run `jupyter lab` in the project folder, then open a notebook in `notebooks/`.
 
 ### 6. Check that it works
@@ -73,3 +105,7 @@ If you see `OK`, the setup is ready.
 - **Mac with Apple Silicon:** the pinned `torch` version needs macOS 14 or newer.
 - **Google Colab** also works. The first code cell of each notebook installs the packages it needs (with pinned versions) when it detects Colab. On your own computer, this cell does nothing, so you can run it safely.
 - **Ollama version.** The notebooks use Ollama 0.34.0 on Colab. On your computer, install this version or a newer one.
+
+---
+
+*Parts of this README were written with the help of Claude (Anthropic).*
