@@ -29,7 +29,15 @@ conda activate anlp-hs26
 
 ### 3. Install the Python packages
 
-Run this from the folder that contains `requirements.txt`:
+Run the commands below from the folder that contains `requirements.txt`.
+
+> **Only if you have a Linux computer without an NVIDIA GPU:** install the CPU version of `torch` first. Otherwise, several GB of GPU packages are installed that you do not need:
+>
+> ```bash
+> uv pip install torch==2.12.1 --index-url https://download.pytorch.org/whl/cpu
+> ```
+
+On all computers, run:
 
 ```bash
 uv pip install -r requirements.txt # uv is optional, it makes the output nicer
@@ -59,7 +67,15 @@ Use this instead of steps 1–3 if you prefer [uv](https://docs.astral.sh/uv/) o
    source .venv/bin/activate      # macOS / Linux
    .venv\Scripts\activate         # Windows
    ```
-4. Install the Python packages and the spaCy English model:
+4. Install the Python packages and the spaCy English model.
+
+   > **Only if you have a Linux computer without an NVIDIA GPU:** install the CPU version of `torch` first (see step 3):
+   >
+   > ```bash
+   > uv pip install torch==2.12.1 --index-url https://download.pytorch.org/whl/cpu
+   > ```
+
+   On all types of computers, run:
    ```bash
    uv pip install -r requirements.txt
    python -m spacy download en_core_web_sm-3.8.0 --direct

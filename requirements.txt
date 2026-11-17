@@ -50,5 +50,5 @@ beautifulsoup4==4.15.0
 html5lib==1.1                                  # needed by pandas.read_html(flavor="bs4")
 
 # --- NOT installed by pip — see README.md ----------------------------------
-# spaCy English model:  python -m spacy download en_core_web_sm-3.8.0
+# spaCy English model:  python -m spacy download en_core_web_sm-3.8.0 --direct
 # Ollama app (S4 notebooks)
