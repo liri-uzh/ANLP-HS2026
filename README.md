@@ -16,7 +16,7 @@ First, download the course materials (step 1). Then set up the Python environmen
 
 ### 1. Download the course materials
 
-**With git (recommended).** This makes it easy to get new notebooks and updates during the semester:
+**With git (recommended).** This makes it easy to get new notebooks and updates during the course:
 
 ```bash
 git clone https://github.com/liri-uzh/ANLP-HS2026.git
