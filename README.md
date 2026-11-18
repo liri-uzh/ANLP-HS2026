@@ -12,13 +12,28 @@ To open a notebook in Google Colab, navigate to the notebook and then change the
 
 You need about 10 GB of free disk space and an internet connection. The first run of some notebooks downloads models and datasets.
 
-You can set up the Python environment with **conda** (steps 1–3 below) or with **uv** (see [Alternative setup with uv](#alternative-setup-with-uv)). Choose one. Steps 4–6 are the same for both.
+First, download the course materials (step 1). Then set up the Python environment with **conda** (steps 2–4 below) or with **uv** (see [Alternative setup with uv](#alternative-setup-with-uv)). Choose one. Steps 5–7 are the same for both.
 
-### 1. Install conda
+### 1. Download the course materials
+
+**With git (recommended).** This makes it easy to get new notebooks and updates during the semester:
+
+```bash
+git clone https://github.com/liri-uzh/ANLP-HS2026.git
+cd ANLP-HS2026
+```
+
+To get the latest version later, run `git pull` in this folder.
+
+**Without git.** On the [GitHub page](https://github.com/liri-uzh/ANLP-HS2026), click **Code → Download ZIP** and unzip the file. To get the latest version later, download the ZIP file again.
+
+All the following commands are run in this project folder (`ANLP-HS2026`).
+
+### 2. Install conda
 
 If you do not have conda yet, install [Miniforge](https://github.com/conda-forge/miniforge) or [Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/install).
 
-### 2. Create the environment
+### 3. Create the environment
 
 The notebooks need **Python 3.12**.
 
@@ -27,7 +42,7 @@ conda create -n anlp-hs26 python=3.12 -y
 conda activate anlp-hs26
 ```
 
-### 3. Install the Python packages
+### 4. Install the Python packages
 
 Run the commands below from the folder that contains `requirements.txt`.
 
@@ -48,7 +63,7 @@ The second line downloads the small English model for spaCy. It is not part of `
 
 ### Alternative setup with uv
 
-Use this instead of steps 1–3 if you prefer [uv](https://docs.astral.sh/uv/) over conda.
+Use this instead of steps 2–4 if you prefer [uv](https://docs.astral.sh/uv/) over conda.
 
 1. Install uv (see the [installation guide](https://docs.astral.sh/uv/getting-started/installation/)):
    ```bash
@@ -69,7 +84,7 @@ Use this instead of steps 1–3 if you prefer [uv](https://docs.astral.sh/uv/) o
    ```
 4. Install the Python packages and the spaCy English model.
 
-   > **Only if you have a Linux computer without an NVIDIA GPU:** install the CPU version of `torch` first (see step 3):
+   > **Only if you have a Linux computer without an NVIDIA GPU:** install the CPU version of `torch` first (see step 4):
    >
    > ```bash
    > uv pip install torch==2.12.1 --index-url https://download.pytorch.org/whl/cpu
@@ -82,9 +97,9 @@ Use this instead of steps 1–3 if you prefer [uv](https://docs.astral.sh/uv/) o
    ```
    (The environment has no `pip`, but that is fine: `spacy download` then uses `uv pip install` automatically.)
 
-Then continue with step 4. In VS Code, choose the `.venv` environment as kernel instead of `anlp-hs26`. Activate the environment (or prefix commands with `uv run`) before you run `jupyter lab` or the check in step 6.
+Then continue with step 5. In VS Code, choose the `.venv` environment as kernel instead of `anlp-hs26`. Activate the environment (or prefix commands with `uv run`) before you run `jupyter lab` or the check in step 7.
 
-### 4. Install Ollama
+### 5. Install Ollama
 
 Ollama is not a Python package. You install it on your computer. It runs language models locally and is used in both `S4` notebooks.
 
@@ -102,12 +117,12 @@ Ollama is not a Python package. You install it on your computer. It runs languag
 
 The S4 notebooks start `ollama serve` for you only on Google Colab. On your own computer, you do it yourself.
 
-### 5. Open the notebooks
+### 6. Open the notebooks
 
 - **VS Code:** open a notebook in `notebooks/`, click **Select Kernel**, and choose `anlp-hs26` (conda) or `.venv` (uv).
 - **JupyterLab:** run `jupyter lab` in the project folder, then open a notebook in `notebooks/`.
 
-### 6. Check that it works
+### 7. Check that it works
 
 ```bash
 python -c "import spacy, torch, pymupdf, docling; spacy.load('en_core_web_sm'); print('OK')"
